@@ -16,6 +16,29 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from rest_framework import routers
+from cards.apiView import *
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+from rest_framework.authtoken import views
+
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
+
+router = routers.SimpleRouter(trailing_slash=True)
+
+router.register("card", CardViewSet, basename="books")
+router.register("user", APIUserViewSet, basename="user")
+router.register("link", LinkViewSet, basename="comment")
+
+
 urlpatterns = [
+    path('api/', SpectacularAPIView.as_view(), name="schema"),
+    path('api/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    path('api-token-auth/', views.obtain_auth_token),
+    path('api/user/', CurrentUserView.as_view(), name="user"),
+
     path('admin/', admin.site.urls),
-]
+] + router.urls + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
