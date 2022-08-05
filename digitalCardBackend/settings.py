@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-4@qr2d_zsn%$^e8h%ftl_us5jm!9qv@^o1hjy&zutzmpzs79u8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'bizz-card-api.herokuapp.com']
 
 
 # Application definition
@@ -155,3 +155,6 @@ SPECTACULAR_SETTINGS = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+import django_heroku
+django_heroku.settings(locals())
