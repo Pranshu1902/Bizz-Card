@@ -26,6 +26,8 @@ from rest_framework.authtoken import views
 
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 
+from cards.views import HomePageView
+
 router = routers.SimpleRouter(trailing_slash=True)
 
 router.register("card", CardViewSet, basename="books")
@@ -41,4 +43,5 @@ urlpatterns = [
     path('api/user/', CurrentUserView.as_view(), name="user"),
 
     path('admin/', admin.site.urls),
+    path('', HomePageView.as_view(), name="home"),
 ] + router.urls + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

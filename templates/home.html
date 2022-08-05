@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <title>Bizz Card API</title>
+  </head>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <div
+    class="p-4 min-h-screen flex flex-col gap-4"
+    style="background-color: azure"
+  >
+    <div class="flex flex-col-reverse justify-center items-center">
+      <div class="flex justify-center items-center">
+        {% load static %}
+        <img src="{% static 'logo.png' %}" alt="logo" class="w-1/2" />
+      </div>
+      <div class="flex flex-col justify-center items-center p-2">
+        <p style="color: #6483ff" class="text-5xl font-bold">Bizz Card API</p>
+        <p class="text-xl">Create sharable digital cards</p>
+      </div>
+    </div>
+    <div class="flex flex-col mt-16 gap-2 justify-center items-center">
+      <a
+        href="https://bizz-card.netlify.app/login"
+        class="shadow-xl relative inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out rounded-full shadow-xl group hover:ring-1 hover:ring-purple-500"
+      >
+        <span
+          class="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 via-purple-600 to-pink-700"
+        ></span>
+        <span
+          class="absolute bottom-0 right-0 block w-64 h-64 mb-32 mr-4 transition duration-500 origin-bottom-left transform rotate-45 translate-x-24 bg-pink-500 rounded-full opacity-30 group-hover:rotate-90 ease"
+        ></span>
+        <span class="relative px-12 text-white font-bold">Log in</span>
+      </a>
+      <p class="">
+        New User?&nbsp;<a
+          href="https://bizz-card.netlify.app/signup"
+          class="font-bold hover:text-blue-900"
+          style="color: #6483ff"
+          >Sign up</a
+        >
+      </p>
+    </div>
+
+    <div class="p-4 gap-y-6 flex flex-col">
+      <div
+        class="flex flex-col md:flex-row items-center justify-center gap-2 w-full"
+      >
+        <img
+          class="md:w-1/2 rounded-lg shadow-lg"
+          src="{% static 'dashboard.png' %}"
+          alt="Bizz cards"
+        />
+        <p class="md:w-1/2 font-bold text-xl">
+          Create sharable digital cards for a profession digital world.
+        </p>
+      </div>
+      <div
+        class="flex flex-col md:flex-row items-center justify-center gap-2 w-full"
+      >
+        <p class="md:w-1/2 font-bold text-xl">
+          Uses
+          <a
+            style="color: #6483ff"
+            class="hover:text-blue-700 hover:underline"
+            href="/api/swagger/"
+            target="_blank"
+            >API</a
+          >, build using DRF-Spectacular for efficient handling of data
+        </p>
+        <img
+          class="md:w-1/2 rounded-lg shadow-lg"
+          src="{% static 'api.png' %}"
+          alt="Money Manager"
+        />
+      </div>
+    </div>
+  </div>
+</html>
