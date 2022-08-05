@@ -14,7 +14,7 @@ class Card(models.Model):
     email = models.EmailField(max_length=100)
     phone = models.CharField(max_length=20)
     location = models.CharField(max_length=200)
-    color = models.CharField(max_length=100)
+    color = models.CharField(max_length=100, choices=color_choices)
 
 class Links(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
