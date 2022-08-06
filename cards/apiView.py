@@ -70,9 +70,8 @@ class CurrentUserView(APIView):
 class PublicCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
-        fields = ['id', 'name', 'title', 'description', 'email', 'phone', 'location', 'color']
-        read_only_fields = ['user']
-    
+        fields = ['id', 'user', 'name', 'title', 'description', 'email', 'phone', 'location', 'color']
+
     # automatically assign the user to the card
     def validate(self, attrs):
         attrs['user'] = self.context['request'].user
@@ -81,9 +80,8 @@ class PublicCardSerializer(serializers.ModelSerializer):
 class PublicLinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Links
-        fields = ['id', 'link', 'name', 'icon', 'card']
-        read_only_fields = ['user']
-    
+        fields = ['id', 'user', 'link', 'name', 'icon', 'card']
+
     # automatically assign the user to the link
     def validate(self, attrs):
         attrs['user'] = self.context['request'].user
