@@ -19,8 +19,8 @@ class CardSerializer(serializers.ModelSerializer):
 class LinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Links
-        fields = ['id', 'link', 'name', 'icon']
-        read_only_fields = ['user', 'card']
+        fields = ['id', 'link', 'name', 'icon', 'card']
+        read_only_fields = ['user']
     
     # automatically assign the user to the link
     def validate(self, attrs):
