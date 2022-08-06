@@ -65,3 +65,34 @@ class CurrentUserView(APIView):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
+
+# public card and links view
+class PublicCardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Card
+        fields = ['id', 'name', 'title', 'description', 'email', 'phone', 'location', 'color']
+        read_only_fields = ['user']
+    
+    # automatically assign the user to the card
+    def validate(self, attrs):
+        attrs['user'] = self.context['request'].user
+        return attrs
+
+class PublicLinkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Links
+        fields = ['id', 'link', 'name', 'icon', 'card']
+        read_only_fields = ['user']
+    
+    # automatically assign the user to the link
+    def validate(self, attrs):
+        attrs['user'] = self.context['request'].user
+        return attrs
+
+class PublicCardViewSet(viewsets.ModelViewSet):
+    queryset = Card.objects.all()
+    serializer_class = CardSerializer
+
+class PublicLinkViewSet(viewsets.ModelViewSet):
+    queryset = Links.objects.all()
+    serializer_class = LinkSerializer

@@ -33,6 +33,8 @@ router = routers.SimpleRouter(trailing_slash=True)
 router.register("card", CardViewSet, basename="books")
 router.register("user", APIUserViewSet, basename="user")
 router.register("link", LinkViewSet, basename="comment")
+router.register("public/card", PublicCardViewSet, basename="public/card")
+router.register("public/link", PublicLinkViewSet, basename="public/link")
 
 
 urlpatterns = [
